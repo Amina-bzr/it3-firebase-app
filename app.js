@@ -18,7 +18,7 @@ auth.onAuthStateChanged(user => {
     if (user) {
     authArea.style.display = 'none';
     feedArea.style.display = 'block';
-    usernameDiv.textContent = `Hello ${user.email} !`;
+    usernameDiv.textContent = `Welcome ${user.email} !`;
     loadMessages();
     }else {
     authArea.style.display = 'flex';
@@ -61,7 +61,7 @@ logoutBtn.addEventListener('click', () => {
 messageForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const user = auth.currentUser;
-    const text = messageInput.value.trim();
+    const text = messageInput.value.trim(); //clean text by removing trailing spaces
     if (user && text) {
         try {
           await db.collection('messages').add({
